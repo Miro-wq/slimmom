@@ -35,6 +35,10 @@
   text-transform: uppercase;
 }
 
+.activeButton {
+  color: #000;
+}
+
 .leefFrame {
   position: absolute;
   z-index: -1;

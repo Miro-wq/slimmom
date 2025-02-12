@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import Header from '../../components/Header/Header';
 import styles from './LoginPage.module.css';
+import { supabase } from '../../services/supabaseClient';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:3001/api/login', { username, password });
-      console.log(response.data);
-      navigate('/diary');
-    } catch (error) {
-      console.error('Eroare la logare', error);
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if (error) {
+      console.error('Eroare la logare:', error.message);
+    } else {
+      console.log('Logare reușită:', data);
+      navigate('/calculator'); // redirect după logare
     }
   };
 
@@ -29,10 +34,10 @@ const LoginPage = () => {
           <h2 className={styles.loginPage}>log in</h2>
           <form className={styles.formGroupLogin} onSubmit={handleLogin}>
             <TextField
-              label="Username"
+              label="Email"
               variant="standard"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               fullWidth
               margin="normal"
               sx={{ width: '240px' }}
@@ -49,11 +54,11 @@ const LoginPage = () => {
               sx={{ width: '240px' }}
               required
             />
+            <div className={styles.btnContainer}>
+              <button className={styles.logBtn} type="submit">Log in</button>
+              <button className={styles.regBtn} onClick={() => navigate('/register')}>Register</button>
+            </div>
           </form>
-        </div>
-        <div className={styles.btnContainer}>
-          <button className={styles.logBtn} type="submit">Log in</button>
-          <button className={styles.regBtn} onClick={() => navigate('/register')}>Registration</button>
         </div>
       </div>
     </>

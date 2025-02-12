@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import React, { use } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 import leef from '../../assets/leef.png';
@@ -11,16 +11,28 @@ import styles from './Header.module.css';
 
 const Header = () => {
     const navigate = useNavigate();
+    const location = useLocation();
 
     return (
         <>
             <div className={styles.buttonContainer}>
-                <img src={logo} alt="SlimMom logo" className={styles.logoImage} onClick={() => navigate('/')}/>
-                <img src={logo2} alt="SlimMom logo" className={styles.logoImage2} onClick={() => navigate('/')}/>
+                <img src={logo} alt="SlimMom logo" className={styles.logoImage} onClick={() => navigate('/')} />
+                <img src={logo2} alt="SlimMom logo" className={styles.logoImage2} onClick={() => navigate('/')} />
                 <div className={styles.homeButtonsContainer}>
-                    <button className={styles.homeButtons} onClick={() => navigate('/login')}>log in</button>
-                    <button className={styles.homeButtons} onClick={() => navigate('/register')}>registration</button>
-                </div>
+                    <button
+                        className={`${styles.homeButtons} ${location.pathname === '/login' ? styles.activeButton : ''
+                            }`}
+                        onClick={() => navigate('/login')}
+                    >
+                        log in
+                    </button>
+                    <button
+                        className={`${styles.homeButtons} ${location.pathname === '/register' ? styles.activeButton : ''
+                            }`}
+                        onClick={() => navigate('/register')}
+                    >
+                        registration
+                    </button>                </div>
             </div>
             <img src={leef} alt="frame" className={styles.leefFrame} />
             <img src={leefFrameSmall} alt="frame" className={styles.leefFrameSmall} />
