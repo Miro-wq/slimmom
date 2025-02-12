@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
-// import logo from '../../assets/logo.png';
-// import logo2 from '../../assets/logo2.png';
-// import leef from '../../assets/leef.png';
-// import leefFrameSmall from '../../assets/leefFrameSmall.png';
-// import banana from '../../assets/banana.png';
-// import strawberry from '../../assets/strawberry.png';
-// import vector from '../../assets/vector.png';
 import Header from '../../components/Header/Header';
 import styles from './HomePage.module.css';
 
@@ -34,24 +27,11 @@ const HomePage = () => {
   return (
     <div className={styles.container}>
       <Header />
-      {/* <div className={styles.buttonContainer}>
-        <img src={logo} alt="SlimMom logo" className={styles.logoImage} />
-        <img src={logo2} alt="SlimMom logo" className={styles.logoImage2} />
-        <div className={styles.homeButtonsContainer}>
-          <button className={styles.homeButtons} onClick={() => navigate('/login')}>log in</button>
-          <button className={styles.homeButtons} onClick={() => navigate('/register')}>registration</button>
-        </div>
-      </div>
-      <img src={leef} alt="frame" className={styles.leefFrame} />
-      <img src={leefFrameSmall} alt="frame" className={styles.leefFrameSmall} />
-      <img src={banana} alt="banana" className={styles.banana} />
-      <img src={strawberry} alt="strawberry" className={styles.strawberry} />
-      <img src={vector} alt="vector" className={styles.vector} /> */}
       <div className={styles.formContainer}>
         <h1 className={styles.homeDescription}>Calculate your daily calorie intake right now</h1>
         <form onSubmit={handleSubmit}>
           <TextField
-            label="Height*"
+            label="Height"
             variant="standard"
             value={form.height}
             onChange={handleChange('height')}
@@ -61,7 +41,7 @@ const HomePage = () => {
             sx={{ width: '240px', marginRight: '20px' }}
           />
           <TextField
-            label="Desired weight*"
+            label="Desired weight"
             variant="standard"
             value={form.desiredWeight}
             onChange={handleChange('desiredWeight')}
@@ -71,7 +51,7 @@ const HomePage = () => {
             sx={{ width: '240px', marginRight: '20px' }}
           />
           <TextField
-            label="Age*"
+            label="Age"
             variant="standard"
             type="number"
             value={form.age}
@@ -82,7 +62,7 @@ const HomePage = () => {
             sx={{ width: '240px', marginRight: '20px' }}
           />
           <TextField
-            label="Blood type*"
+            label="Blood type"
             variant="standard"
             value={form.bloodType}
             onChange={handleChange('bloodType')}
@@ -100,7 +80,7 @@ const HomePage = () => {
             <option value="O">O</option>
           </TextField>
           <TextField
-            label="Current weight*"
+            label="Current weight"
             variant="standard"
             value={form.currentWeight}
             onChange={handleChange('currentWeight')}

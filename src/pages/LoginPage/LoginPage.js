@@ -23,35 +23,39 @@ const LoginPage = () => {
 
   return (
     <>
-    <Header />
-    <div className={styles.loginContainer}>
-      <h2 className={styles.loginPage}>log in</h2>
-      <form className={styles.formGroupLogin} onSubmit={handleLogin}>
-          <TextField
-            label="Username"
-            variant="standard"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            fullWidth
-            margin="normal"
-            sx={{ width: '240px' }}
-            required
-          />
+      <div className={styles.container}>
+        <Header />
+        <div className={styles.loginContainer}>
+          <h2 className={styles.loginPage}>log in</h2>
+          <form className={styles.formGroupLogin} onSubmit={handleLogin}>
+            <TextField
+              label="Username"
+              variant="standard"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              fullWidth
+              margin="normal"
+              sx={{ width: '240px' }}
+              required
+            />
 
-          <TextField
-            label="Password"
-            variant="standard"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
-            margin="normal"
-            sx={{ width: '240px' }}
-            required
-          />
-        <button type="submit">Log in</button>
-        <button className={styles.regBtn} onClick={() => navigate('/register')}>registration</button>
-      </form>
-    </div>
+            <TextField
+              label="Password"
+              variant="standard"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              fullWidth
+              margin="normal"
+              sx={{ width: '240px' }}
+              required
+            />
+          </form>
+        </div>
+        <div className={styles.btnContainer}>
+          <button className={styles.logBtn} type="submit">Log in</button>
+          <button className={styles.regBtn} onClick={() => navigate('/register')}>Registration</button>
+        </div>
+      </div>
     </>
   );
 };

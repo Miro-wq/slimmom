@@ -14,10 +14,9 @@ const Header = () => {
 
     return (
         <>
-        {/* <div className={styles.container}> */}
             <div className={styles.buttonContainer}>
-                <img src={logo} alt="SlimMom logo" className={styles.logoImage} />
-                <img src={logo2} alt="SlimMom logo" className={styles.logoImage2} />
+                <img src={logo} alt="SlimMom logo" className={styles.logoImage} onClick={() => navigate('/')}/>
+                <img src={logo2} alt="SlimMom logo" className={styles.logoImage2} onClick={() => navigate('/')}/>
                 <div className={styles.homeButtonsContainer}>
                     <button className={styles.homeButtons} onClick={() => navigate('/login')}>log in</button>
                     <button className={styles.homeButtons} onClick={() => navigate('/register')}>registration</button>
@@ -28,7 +27,6 @@ const Header = () => {
             <img src={banana} alt="banana" className={styles.banana} />
             <img src={strawberry} alt="strawberry" className={styles.strawberry} />
             <img src={vector} alt="vector" className={styles.vector} />
-        {/* </div> */}
         </>
     );
 };
