@@ -1,4 +1,3 @@
-// src/pages/CalculatorPage.js
 import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
@@ -8,7 +7,7 @@ import products from '../../data/products.json';
 
 const CalculatorPage = () => {
     // const navigate = useNavigate();
-    // doar pt exemplu, trebuie gasit o metoda de a prelua numele utilizatorului ( un BD ceva)
+    // doar pt exemplu, trebuie gasit o metoda de a prelua numele utilizatorului ( un DB ceva)
     // const userName = "John Doe";
 
     const [form, setForm] = useState({
@@ -39,8 +38,8 @@ const CalculatorPage = () => {
         if (!currentWeightNum) return;
         const dailyRate = currentWeightNum * 30;
 
-        const leftValue = dailyRate - 500; // exemplu
-        const consumedValue = dailyRate - leftValue; // în acest caz, 500 kcal
+        const leftValue = dailyRate - 500;
+        const consumedValue = dailyRate - leftValue;
         const percentNormal = ((consumedValue / dailyRate) * 100).toFixed(0);
 
         setCalculation({
@@ -155,60 +154,64 @@ const CalculatorPage = () => {
                 </div>
 
                 {/* Secțiunea dreaptă: Rezumat și informații suplimentare */}
-                <div className={styles.plm}></div>
+                <div className={styles.vector}></div>
                 <div className={styles.rightSection}>
                     <div className={styles.summary}>
-                        <h3>Summary for {today}</h3>
-                        {calculationDone && (
-                            <form className={styles.summaryForm}>
-                                <div className={styles.summaryItem}>
-                                    <label>Left:</label>
-                                    <input
-                                        className={styles.summaryInput}
-                                        type="text"
-                                        value={`${calculation.left} kcal`}
-                                        readOnly
-                                    />
+                        <div className={styles.summaryHeader}>
+                            <h3>Summary for {today}</h3>
+                            {calculationDone && (
+                                <form className={styles.summaryForm}>
+                                    <div className={styles.summaryItem}>
+                                        <label>Left:</label>
+                                        <input
+                                            className={styles.summaryInput}
+                                            type="text"
+                                            value={`${calculation.left} kcal`}
+                                            readOnly
+                                        />
+                                    </div>
+                                    <div className={styles.summaryItem}>
+                                        <label>Consumed:</label>
+                                        <input
+                                            className={styles.summaryInput}
+                                            type="text"
+                                            value={`${calculation.consumed} kcal`}
+                                            readOnly
+                                        />
+                                    </div>
+                                    <div className={styles.summaryItem}>
+                                        <label>Daily rate:</label>
+                                        <input
+                                            className={styles.summaryInput}
+                                            type="text"
+                                            value={`${calculation.dailyRate} kcal`}
+                                            readOnly
+                                        />
+                                    </div>
+                                    <div className={styles.summaryItem}>
+                                        <label>n% of normal:</label>
+                                        <input
+                                            className={styles.summaryInput}
+                                            type="text"
+                                            value={`${calculation.percentNormal}%`}
+                                            readOnly
+                                        />
+                                    </div>
+                                </form>
+                            )}
+                        </div>
+                        <div className={styles.summaryText}>
+                            <h4>Food not recommended:</h4>
+                            {calculationDone && (
+                                <div className={styles.foodsNotRecommended}>
+                                    <ul className={styles.foodList}>
+                                        {foodsNotRecommended.map((food, index) => (
+                                            <li key={index}>{food.title}</li>
+                                        ))}
+                                    </ul>
                                 </div>
-                                <div className={styles.summaryItem}>
-                                    <label>Consumed:</label>
-                                    <input
-                                        className={styles.summaryInput}
-                                        type="text"
-                                        value={`${calculation.consumed} kcal`}
-                                        readOnly
-                                    />
-                                </div>
-                                <div className={styles.summaryItem}>
-                                    <label>Daily rate:</label>
-                                    <input
-                                        className={styles.summaryInput}
-                                        type="text"
-                                        value={`${calculation.dailyRate} kcal`}
-                                        readOnly
-                                    />
-                                </div>
-                                <div className={styles.summaryItem}>
-                                    <label>n% of normal:</label>
-                                    <input
-                                        className={styles.summaryInput}
-                                        type="text"
-                                        value={`${calculation.percentNormal}%`}
-                                        readOnly
-                                    />
-                                </div>
-                            </form>
-                        )}
-                        <h4>Food not recommended:</h4>
-                        {calculationDone && (
-                            <div className={styles.foodsNotRecommended}>
-                                <ul className={styles.foodList}>
-                                    {foodsNotRecommended.map((food, index) => (
-                                        <li key={index}>{food.title}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

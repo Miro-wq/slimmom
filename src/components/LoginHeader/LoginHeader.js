@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
 import loginLeef from '../../assets/loginLeef.png';
+import loginLeefSmall from '../../assets/loginLeefSmall.png';
 import styles from './LoginHeader.module.css';
 import { supabase } from '../../services/supabaseClient';
 
@@ -10,7 +11,7 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const userName = "John Doe";
+    const userName = "Nic";
     const handleExit = async () => {
         const { error } = await supabase.auth.signOut();
         if (error) {
@@ -51,7 +52,7 @@ const Header = () => {
                 </div>
             </div>
             <img src={loginLeef} alt="frame" className={styles.leefFrame} />
-            {/* <img src={vectorLogin} alt="vector" className={styles.vector} /> */}
+            <img src={loginLeefSmall} alt="smallFrame" className={styles.loginLeefSmall} />
         </>
     );
 };

@@ -47,7 +47,7 @@ form {
   height: 343px;
 }
 
-.plm {
+.vector {
   position: fixed;
   top: 0;
   right: 0;
@@ -56,6 +56,7 @@ form {
   background-color: #f0f0f0;
   z-index: -2;
 }
+
 .rightSection {
   width: 37em;
 }
@@ -118,6 +119,44 @@ label {
   letter-spacing: 0.04em;
   color: #9b9faa;
   line-height: 2em;
+}
+
+@media screen and (max-width: 1320px) {
+  .calculatorPage {
+    flex-direction: column;
+  }
+
+  .vector {
+    top: 45em;
+    bottom: 0;
+    width: 100%;
+    height: 26em;
+  }
+
+  .summary {
+    margin-right: unset;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    padding-bottom: 4em;
+  }
+
+  .summaryItem {
+    width: 18em;
+  }
+
+  .foodsNotRecommended {
+    height: 13em;
+    width: 22em;
+  }
+
+  .calcSubmitButton {
+        position: absolute;
+        top: 36em;
+        cursor: default;
+  }
 }
 
 @media screen and (max-width: 768px) {
