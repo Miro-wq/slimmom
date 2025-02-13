@@ -37,6 +37,18 @@ form {
   background-color: #ffa667;
 }
 
+.modalButton {
+  margin-top: 2em;
+  padding: 13px 49px;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px 0 rgba(252, 132, 45, 0.5);
+  background: #fc842d;
+  transition: background 0.3s ease;
+}
+
 @media screen and (max-width: 768px) {
   .formContainer {
     margin-top: unset;

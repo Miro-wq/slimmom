@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { TextField, Modal, Box, Typography } from '@mui/material';
 import Header from '../../components/Header/Header';
 import styles from './HomePage.module.css';
+import products from '../../data/products.json';
 
 const HomePage = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     height: '',
     desiredWeight: '',
@@ -13,6 +14,9 @@ const HomePage = () => {
     bloodType: '',
     currentWeight: ''
   });
+  const [openModal, setOpenModal] = useState(false);
+  const [calorieIntake, setCalorieIntake] = useState(null);
+  const [foodsNotAllowed, setFoodsNotAllowed] = useState([]);
 
   const handleChange = (prop) => (event) => {
     setForm({ ...form, [prop]: event.target.value });
@@ -20,15 +24,43 @@ const HomePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // aici pt logica de validare sau trimiterea datelor catre endpoint
-    console.log('Form data:', form);
+
+    // currentWeight * 30
+    const recommendedCalories = Number(form.currentWeight) * 30;
+    setCalorieIntake(recommendedCalories);
+
+    // pentru tipul de sânge: A → 1, B → 2, AB → 3, O → 4
+    const bloodMapping = { A: 1, B: 2, AB: 3, O: 4 };
+    const bloodIndex = bloodMapping[form.bloodType.toUpperCase()];
+    if (!bloodIndex) {
+      alert('Please enter a valid blood type (A, B, AB, O).');
+      return;
+    }
+
+    // filtrarea alimentele care nu sunt recomandate pentru tipul de sânge al utilizatorului
+    const filteredFoods = products.filter((product) => {
+      return (
+        product.groupBloodNotAllowed &&
+        product.groupBloodNotAllowed[bloodIndex] === true
+      );
+    });
+
+    setFoodsNotAllowed(filteredFoods);
+    setOpenModal(true);
+  };
+
+  const handleStartLosingWeight = () => {
+    setOpenModal(false);
+    navigate('/login');
   };
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.formContainer}>
-        <h1 className={styles.homeDescription}>Calculate your daily calorie intake right now</h1>
+        <h1 className={styles.homeDescription}>
+          Calculate your daily calorie intake right now
+        </h1>
         <form onSubmit={handleSubmit}>
           <TextField
             label="Height"
@@ -89,14 +121,54 @@ const HomePage = () => {
             required
             sx={{ width: '240px', marginRight: '20px' }}
           />
-          {/* </div> */}
           <button className={styles.submitButton} type="submit">
             Start losing weight
           </button>
         </form>
       </div>
-    </div>
 
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 500,
+            bgcolor: 'background.paper',
+            border: '2px solid #000',
+            boxShadow: 24,
+            p: 4,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+        >
+          <Typography id="modal-title" variant="h6" component="h2">
+            Your recommended daily calorie intake is {calorieIntake} kcal
+          </Typography>
+          <Typography id="modal-description" sx={{ mt: 2 }}>
+            Foods you should not eat:
+          </Typography>
+          <Box sx={{ maxHeight: '300px', overflowY: 'auto', mt: 2 }}>
+            <ol>
+              {foodsNotAllowed.map((food, index) => (
+                <li key={index}>{food.title}</li>
+              ))}
+            </ol>
+          </Box>
+          <button className={styles.modalButton} onClick={handleStartLosingWeight}>
+            Start losing weight
+          </button>
+        </Box>
+      </Modal>
+
+    </div>
   );
 };
 
