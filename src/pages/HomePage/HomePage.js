@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TextField, Modal, Box, Typography } from '@mui/material';
+import { TextField, Modal, Box } from '@mui/material';
 import Header from '../../components/Header/Header';
 import styles from './HomePage.module.css';
 import products from '../../data/products.json';
@@ -149,12 +149,13 @@ const HomePage = () => {
             alignItems: 'center'
           }}
         >
-          <Typography id="modal-title" variant="h6" component="h2">
-            Your recommended daily calorie intake is {calorieIntake} kcal
-          </Typography>
-          <Typography id="modal-description" sx={{ mt: 2 }}>
+          <h2 id="modal-title" className={styles.modalTitle}>
+            Your recommended daily calorie intake is <span className={styles.calorieValue}>{calorieIntake}</span> kcal
+          </h2>
+          <p id="modal-description" className={styles.modalDescription}>
             Foods you should not eat:
-          </Typography>
+          </p>
+
           <Box sx={{ maxHeight: '300px', overflowY: 'auto', mt: 2 }}>
             <ol>
               {foodsNotAllowed.map((food, index) => (

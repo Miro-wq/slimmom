@@ -49,6 +49,29 @@ form {
   transition: background 0.3s ease;
 }
 
+.modalTitle {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 190%;
+  text-align: center;
+  color: #212121;
+  border-bottom: 2px solid #fc842d;
+  padding-bottom: 18px;
+}
+
+.calorieValue {
+  font-size: 2rem;
+  color: #333;
+}
+
+.modalDescription {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: #212121;
+  width: -webkit-fill-available;
+}
+
 @media screen and (max-width: 768px) {
   .formContainer {
     margin-top: unset;

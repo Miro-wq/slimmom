@@ -1,12 +1,24 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children }) => {
-    const token = localStorage.getItem('supabase.auth.token');
-    if (!token) {
-        return <Navigate to="/login" />;
+  const tokenStr = localStorage.getItem('sb-blckmkeqeanxvoiimwbq-auth-token');
+  
+  if (!tokenStr) {
+    return <Navigate to="/login" />;
+  }
+  
+  try {
+    const tokenObj = JSON.parse(tokenStr);
+    if (!tokenObj || !tokenObj.access_token) {
+      return <Navigate to="/login" />;
     }
-    return children;
+  } catch (error) {
+    return <Navigate to="/login" />;
+  }
+  
+  return children;
 };
 
 export default ProtectedRoute;
+
