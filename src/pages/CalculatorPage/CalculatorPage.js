@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
 import LoginHeader from '../../components/LoginHeader/LoginHeader';
 import styles from './CalculatorPage.module.css';
 import products from '../../data/products.json';
 
 const CalculatorPage = () => {
-    // const navigate = useNavigate();
-    // doar pt exemplu, trebuie gasit o metoda de a prelua numele utilizatorului ( un DB ceva)
-    // const userName = "John Doe";
-
     const [form, setForm] = useState({
         height: '',
         desiredWeight: '',
@@ -64,11 +59,8 @@ const CalculatorPage = () => {
         });
         setFoodsNotRecommended(filteredFoods);
         setCalculationDone(true);
+        localStorage.setItem('dailyRate', dailyRate);
     };
-
-    // const handleExit = () => {
-    //     navigate('/login');
-    // };
 
     const today = new Date().toLocaleDateString();
 
@@ -76,7 +68,6 @@ const CalculatorPage = () => {
         <div className={styles.container}>
             <LoginHeader />
             <div className={styles.calculatorPage}>
-                {/* Secțiunea stângă: Formularul de calcul */}
                 <div className={styles.leftSection}>
                     <h1 className={styles.homeDescription}>
                         Calculate your daily calorie intake right now
@@ -153,7 +144,6 @@ const CalculatorPage = () => {
                     </form>
                 </div>
 
-                {/* Secțiunea dreaptă: Rezumat și informații suplimentare */}
                 <div className={styles.vector}></div>
                 <div className={styles.rightSection}>
                     <div className={styles.summary}>

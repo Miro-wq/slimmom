@@ -21,7 +21,6 @@ const LoginPage = () => {
     if (error) {
       console.error('Eroare la logare:', error.message);
     } else {
-      console.error("Login error:", error);
       console.log('Logare reușită:', data);
       navigate('/calculator'); // redirect după logare
     }

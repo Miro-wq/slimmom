@@ -1,4 +1,4 @@
-// import React, { use } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import logo2 from '../../assets/logo2.png';
@@ -8,10 +8,23 @@ import styles from './LoginHeader.module.css';
 import { supabase } from '../../services/supabaseClient';
 
 const Header = () => {
+    const [userName, setUserName] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
 
-    const userName = "Nic";
+    useEffect(() => {
+        const getUserName = async () => {
+            const { data: { session }, error } = await supabase.auth.getSession();
+            if (error) {
+                console.error('Error getting session:', error);
+            } else if (session) {
+                const name = session.user.user_metadata.name || session.user.email;
+                setUserName(name);
+            }
+        };
+        getUserName();
+    }, []);
+
     const handleExit = async () => {
         const { error } = await supabase.auth.signOut();
         if (error) {

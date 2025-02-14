@@ -3,14 +3,13 @@ const cors = require('cors');
 const app = express();
 const port = 3001;
 
-// Middleware pentru cereri JSON și CORS
 app.use(express.json());
 app.use(cors());
 
 // endpoint pentru login
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
-  // implementat logica de verificare a utilizatorului
+  // de implementat logica de verificare a utilizatorului
     if (username && password) {
       res.json({ message: 'Login successful' });
     } else {
@@ -21,7 +20,7 @@ app.post('/api/login', (req, res) => {
 // endpoint pentru inregistrare
 app.post('/api/register', (req, res) => {
   const { username, email, password } = req.body;
-  // implementat logica de inregistrare a utilizatorului
+  // de implementat logica de inregistrare a utilizatorului
   if (username && email && password) {
       res.json({ message: 'Registration successful' });
     } else {
@@ -31,7 +30,7 @@ app.post('/api/register', (req, res) => {
 
 app.post('/api/diary', (req, res) => {
   const { userId, entry } = req.body;
-  // implementat logica de adaugare a unei intrari in jurnal
+  // de implementat logica de adaugare a unei intrari in jurnal
   res.json({ message: 'Diary entry saved' });
 });
 
