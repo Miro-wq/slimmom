@@ -20,9 +20,13 @@
 - **Real-Time Summary**:
 
     A comprehensive summary displays:
+  
     **Left**: Remaining calories for the day.
+  
     **Consumed**: Total calories consumed.
+  
     **Daily Rate**: The personalized recommended intake.
+  
     **n% of Normal**: The percentage of the daily rate that has been consumed.
   
 - **Responsive Design**: The layout adapts to different screen sizes, ensuring that key information is always accessible. On larger screens, the summary section is fixed on the side, while on smaller devices, the design adjusts for optimal viewing.
