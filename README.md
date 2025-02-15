@@ -17,12 +17,14 @@
 - **Daily Calorie Calculator**: Users can enter personal details such as height, desired weight, age, blood type, and current weight to receive a recommended daily calorie intake.
 - **Meal Diary**: Log food consumption by adding entries with product names and serving sizes (grams). Each entry is timestamped and stored in the Supabase database for persistent tracking.
 - **Personalized Food Recommendations**: The app analyzes user data—especially blood type—to generate tailored lists of foods that are not recommended, using a curated products dataset.
-- **Real-Time Summary**: 
-A comprehensive summary displays:
-**Left**: Remaining calories for the day.
-**Consumed**: Total calories consumed.
-**Daily Rate**: The personalized recommended intake.
-**n% of Normal**: The percentage of the daily rate that has been consumed.
+- **Real-Time Summary**:
+
+    A comprehensive summary displays:
+    **Left**: Remaining calories for the day.
+    **Consumed**: Total calories consumed.
+    **Daily Rate**: The personalized recommended intake.
+    **n% of Normal**: The percentage of the daily rate that has been consumed.
+  
 - **Responsive Design**: The layout adapts to different screen sizes, ensuring that key information is always accessible. On larger screens, the summary section is fixed on the side, while on smaller devices, the design adjusts for optimal viewing.
 - **Protected Routes**: Sensitive pages such as the Calculator and Diary are accessible only to authenticated users, ensuring data privacy and security.
 
