@@ -77,6 +77,18 @@ const DiaryPage = () => {
         }
     };
 
+    const handleDeleteEntry = async (id) => {
+        const { error } = await supabase
+            .from('diary_entries')
+            .delete()
+            .eq('id', id);
+        if (error) {
+            console.error('Error deleting diary entry:', error);
+        } else {
+            setDiaryEntries(diaryEntries.filter((entry) => entry.id !== id));
+        };
+    };
+
     const formatDate = (isoDate) => {
         const [year, month, day] = isoDate.split('-');
         return `${day}/${month}/${year}`;
@@ -145,9 +157,15 @@ const DiaryPage = () => {
                             <p>No entries for this date.</p>
                         ) : (
                             <ul className={styles.diaryFoodList}>
-                                {diaryEntries.map((entry, index) => (
-                                    <li className={styles.diaryFoods} key={index}>
+                                {diaryEntries.map((entry) => (
+                                    <li className={styles.diaryFoods} key={entry.id}>
                                         {entry.product_name} - {entry.grams} grams
+                                        <button
+                                            className={styles.deleteButton}
+                                            onClick={() => handleDeleteEntry(entry.id)}
+                                        >
+                                            X
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
