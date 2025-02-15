@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { TextField } from '@mui/material';
 import LoginHeader from '../../components/LoginHeader/LoginHeader';
 import styles from './DiaryPage.module.css';
@@ -27,7 +27,7 @@ const DiaryPage = () => {
         fetchSession();
     }, []);
 
-    const loadDiaryEntries = async () => {
+    const loadDiaryEntries = useCallback(async () => {
         if (!currentUserId) return;
         const { data, error } = await supabase
             .from('diary_entries')
@@ -39,11 +39,11 @@ const DiaryPage = () => {
         } else {
             setDiaryEntries(data || []);
         }
-    };
+    }, [currentUserId, selectedDate]);
 
     useEffect(() => {
         loadDiaryEntries();
-    }, [selectedDate, currentUserId]);
+    }, [selectedDate, currentUserId, loadDiaryEntries]);
 
     const handleDateChange = (e) => {
         setSelectedDate(e.target.value);

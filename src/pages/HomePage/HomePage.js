@@ -51,7 +51,7 @@ const HomePage = () => {
 
   const handleStartLosingWeight = () => {
     setOpenModal(false);
-    navigate('/login');
+    navigate('/register');
   };
 
   return (
