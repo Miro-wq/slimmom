@@ -1,7 +1,8 @@
-# ✨ SlimMom ✨
+# SlimMom 
 
-![Description](https://img.shields.io/badge/Description-purple?style=for-the-badge)
->SlimMom is a modern web application designed to help users monitor their daily calorie intake and track their meals on their weight loss journey. With personalized calculations and food recommendations based on individual health data, SlimMom offers an intuitive way to manage a healthier lifestyle.
+## Description 
+
+SlimMom is a modern web application designed to help users monitor their daily calorie intake and track their meals on their weight loss journey. With personalized calculations and food recommendations based on individual health data, SlimMom offers an intuitive way to manage a healthier lifestyle.
 
 ## 🛠 Technologies Used
 - **React.js** – A powerful JavaScript library for building dynamic and responsive user interfaces.
@@ -11,7 +12,7 @@
 - **React Router** – Facilitates smooth client-side navigation with protected routes.
 - **Netlify** – The deployment platform used for hosting the application.
 
-![Features](https://img.shields.io/badge/Features-purple?style=for-the-badge)
+## Features 
 
 - **User Authentication**: Secure sign-up and login functionality using Supabase Auth ensures personalized access.
 - **Daily Calorie Calculator**: Users can enter personal details such as height, desired weight, age, blood type, and current weight to receive a recommended daily calorie intake.
@@ -38,6 +39,6 @@
 - **Receive Tailored Diet Insights**: Access personalized food recommendations based on your blood type and other health metrics.
 - **Manage Your Wellness Journey**: View real-time summaries that provide insights into your daily consumption and remaining calorie allowance, empowering you to make informed dietary choices.
 
-![Conclusion](https://img.shields.io/badge/Conclusion-purple?style=for-the-badge)
+## Conclusion 
 
 SlimMom brings together modern web technologies and personalized nutrition insights to offer a comprehensive solution for managing a healthier lifestyle.
