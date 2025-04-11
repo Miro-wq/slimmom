@@ -4,7 +4,7 @@
 
 SlimMom is a modern web application designed to help users monitor their daily calorie intake and track their meals on their weight loss journey. With personalized calculations and food recommendations based on individual health data, SlimMom offers an intuitive way to manage a healthier lifestyle.
 
-## 🛠 Technologies Used
+## Technologies Used
 - **React.js** – A powerful JavaScript library for building dynamic and responsive user interfaces.
 - **Material-UI (MUI)** – Provides pre-styled UI components to accelerate design and development.
 - **CSS Modules** – Enables modular and maintainable styling for component-based development.
